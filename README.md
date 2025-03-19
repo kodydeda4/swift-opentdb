@@ -36,13 +36,15 @@ import OpenTDB
 Returns the entire list of categories and ids in the database.
 
 ```swift
-let categories: [Api.Category] try await Api.shared.fetchAllCategories().triviaCategories
+let openTDB = OpenTDBClient()
+let categories: [OpenTDBClient.Category] try await openTDB.fetchAllCategories().triviaCategories
 ```
 
 ### Fetch Questions
 
 ```swift
-let questions: [Api.Question] = try await Api.shared.fetchQuestions(
+let openTDB = OpenTDBClient()
+let questions: [OpenTDBClient.Question] = try await openTDB.fetchQuestions(
   amount: 10, 
   categoryId: 0, 
   type: .mulipleChoice
