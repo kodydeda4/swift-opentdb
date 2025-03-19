@@ -33,14 +33,27 @@ import OpenTDB
 
 ### Fetch Categories
 
-Returns the entire list of categories and ids in the database.
+You can fetch the entire list of categories and ids in the database with `fetchAllCategories()`.
 
 ```swift
 let openTDB = OpenTDBClient()
 let categories: [OpenTDBClient.Category] try await openTDB.fetchAllCategories().triviaCategories
 ```
 
+Here's what the swift type looks like:
+
+```swift
+public struct OpenTDBClient.Category: Sendable, Identifiable, Equatable, Codable, Hashable {
+  public let id: Int
+  public let name: String
+}
+```
+
 ### Fetch Questions
+
+You can fetch questions with `fetchQuestions()`.
+
+You
 
 ```swift
 let openTDB = OpenTDBClient()
@@ -50,6 +63,20 @@ let questions: [OpenTDBClient.Question] = try await openTDB.fetchQuestions(
   type: .mulipleChoice
 )
 .results
+```
+
+Here's what the swift type looks like:
+
+```swift
+public struct OpenTDBClient.Question: Sendable, Identifiable, Equatable, Codable, Hashable {
+  public var id: String { question }
+  public let type: String
+  public let difficulty: String
+  public let category: String
+  public let question: String
+  public let correctAnswer: String
+  public let incorrectAnswers: [String]
+}
 ```
 
 ## License
