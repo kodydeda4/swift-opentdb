@@ -1,10 +1,10 @@
 import Foundation
 
-public struct Api: Sendable {
-  public static let shared = Api()
+public struct OpenTDBClient: Sendable {
+  public static let shared = OpenTDBClient()
   
   @Sendable public func fetchAllCategories() async throws -> FetchAllCategoriesResponse {
-    try await Api.request(
+    try await OpenTDBClient.request(
       "https://opentdb.com/api_category.php"
     )
   }
@@ -14,7 +14,7 @@ public struct Api: Sendable {
     categoryId: Int,
     type: QuestionType = .mulipleChoice
   ) async throws -> FetchQuestionsResponse {
-    try await Api.request(
+    try await OpenTDBClient.request(
       "https://opentdb.com/api.php?amount=\(amount)&category=\(categoryId)&type=\(type.rawValue)"
     )
   }
@@ -51,7 +51,7 @@ public struct Api: Sendable {
 
 // MARK: - Extensions
 
-extension Api.Question {
+extension OpenTDBClient.Question {
   public var answers: [String] { incorrectAnswers + [correctAnswer] }
   
   public var formattedQuestion: String {
@@ -59,7 +59,7 @@ extension Api.Question {
   }
 }
 
-extension Api.Category {
+extension OpenTDBClient.Category {
   public var formattedName: String {
     self.name
       .replacingOccurrences(of: "Entertainment: ", with: "")
@@ -97,7 +97,7 @@ extension Api.Category {
   }
 }
 
-extension Api {
+extension OpenTDBClient {
   private static func request<T: Decodable>(_ urlString: String) async throws -> T {
     guard let url = URL(string: urlString) else {
       throw URLError(.badURL)
