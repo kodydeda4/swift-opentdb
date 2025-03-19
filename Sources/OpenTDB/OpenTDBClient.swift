@@ -25,11 +25,20 @@ public struct OpenTDBClient: Sendable {
   
   public struct FetchAllCategoriesResponse: Sendable, Equatable, Codable, Hashable {
     public let triviaCategories: [Category]
+    
+    public init(triviaCategories: [Category]) {
+      self.triviaCategories = triviaCategories
+    }
   }
   
   public struct FetchQuestionsResponse: Sendable, Equatable, Codable, Hashable {
     public let responseCode: Int
     public let results: [Question]
+    
+    public init(responseCode: Int, results: [Question]) {
+      self.responseCode = responseCode
+      self.results = results
+    }
   }
   
   public enum QuestionType: String, Sendable, Equatable, Codable, Hashable {
@@ -40,6 +49,14 @@ public struct OpenTDBClient: Sendable {
   public struct Category: Sendable, Identifiable, Equatable, Codable, Hashable {
     public let id: Int
     public let name: String
+    
+    public init(
+      id: Int,
+      name: String
+    ) {
+      self.id = id
+      self.name = name
+    }
   }
   
   public struct Question: Sendable, Identifiable, Equatable, Codable, Hashable {
@@ -50,6 +67,22 @@ public struct OpenTDBClient: Sendable {
     public let question: String
     public let correctAnswer: String
     public let incorrectAnswers: [String]
+    
+    public init(
+      type: String,
+      difficulty: String,
+      category: String,
+      question: String,
+      correctAnswer: String,
+      incorrectAnswers: [String]
+    ) {
+      self.type = type
+      self.difficulty = difficulty
+      self.category = category
+      self.question = question
+      self.correctAnswer = correctAnswer
+      self.incorrectAnswers = incorrectAnswers
+    }
   }
 }
 
