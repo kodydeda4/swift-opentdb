@@ -3,13 +3,13 @@ import Foundation
 public struct Api: Sendable {
   public static let shared = Api()
   
-  public func fetchAllCategories() async throws -> FetchAllCategoriesResponse {
+  @Sendable public func fetchAllCategories() async throws -> FetchAllCategoriesResponse {
     try await Api.request(
       "https://opentdb.com/api_category.php"
     )
   }
   
-  public func fetchQuestions(
+  @Sendable public func fetchQuestions(
     amount: Int = 10,
     categoryId: Int,
     type: QuestionType = .mulipleChoice
@@ -19,26 +19,26 @@ public struct Api: Sendable {
     )
   }
   
-  public struct FetchAllCategoriesResponse: Codable {
+  public struct FetchAllCategoriesResponse: Sendable, Equatable, Codable, Hashable {
     public let triviaCategories: [Category]
   }
   
-  public struct FetchQuestionsResponse: Codable {
+  public struct FetchQuestionsResponse: Sendable, Equatable, Codable, Hashable {
     public let responseCode: Int
     public let results: [Question]
   }
   
-  public enum QuestionType: String {
+  public enum QuestionType: String, Sendable, Equatable, Codable, Hashable {
     case mulipleChoice = "multiple"
     case trueFalse = "boolean"
   }
   
-  public struct Category: Codable, Identifiable, Hashable {
+  public struct Category: Sendable, Identifiable, Equatable, Codable, Hashable {
     public let id: Int
     public let name: String
   }
   
-  public struct Question: Codable, Hashable, Identifiable {
+  public struct Question: Sendable, Identifiable, Equatable, Codable, Hashable {
     public var id: String { question }
     public let type: String
     public let difficulty: String
