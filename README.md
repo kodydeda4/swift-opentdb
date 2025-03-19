@@ -53,8 +53,6 @@ public struct OpenTDBClient.Category: Sendable, Identifiable, Equatable, Codable
 
 You can fetch questions with `fetchQuestions()`.
 
-You
-
 ```swift
 let openTDB = OpenTDBClient()
 let questions: [OpenTDBClient.Question] = try await openTDB.fetchQuestions(
