@@ -1,11 +1,8 @@
-# Swift OpenTDB
+# swift-opentdb
 
-<img width=500 src="img/logo.png">
+<img width=750 src="img/logo.png">
 
 A lightweight Swift package for fetching trivia questions from the [Open Trivia Database (OpenTDB)](https://opentdb.com/).
-
-
-> The Open Trivia Database provides a completely free JSON API for use in programming projects. Use of this API does not require a API Key, just generate the URL below use it in your own application to retrieve trivia questions.
 
 ## Features
 
