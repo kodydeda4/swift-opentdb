@@ -1,8 +1,14 @@
 # Swift OpenTDB
 
+<img width=500 src="img/logo.png">
+
 A lightweight Swift package for fetching trivia questions from the [Open Trivia Database (OpenTDB)](https://opentdb.com/).
 
+
+> The Open Trivia Database provides a completely free JSON API for use in programming projects. Use of this API does not require a API Key, just generate the URL below use it in your own application to retrieve trivia questions.
+
 ## Features
+
 - Fetch trivia questions with customizable categories, difficulty levels, and question types.
 - Decodes JSON responses into Swift models.
 - Simple and intuitive API for seamless integration into your iOS, macOS, watchOS, or tvOS projects.
@@ -10,13 +16,15 @@ A lightweight Swift package for fetching trivia questions from the [Open Trivia 
 ## Installation
 
 ### Swift Package Manager (SPM)
+
 1. Open your Xcode project.
 2. Navigate to **File > Add Packages**.
-3. Enter the repository URL:
-   ```
-   https://github.com/kodydeda4/swift-opentdb.git
-   ```
+3. Enter the repository URL
 4. Select the latest version and add the package to your project.
+
+``` HTML
+https://github.com/kodydeda4/swift-opentdb.git
+```
 
 ## Usage
 
@@ -28,21 +36,15 @@ import OpenTDB
 
 ### Fetch Categories
 
-You can fetch 
+Returns the entire list of categories and ids in the database.
 
 ```swift
-let api = Api.shared
-
-let categories: [Api.Category] try await self.api.fetchAllCategories().triviaCategories
+let categories: [Api.Category] try await Api.shared.fetchAllCategories().triviaCategories
 ```
 
 ### Fetch Questions
 
-You can fetch [Api.Question] with async/await.
-
 ```swift
-let api = Api.shared
-
 let questions: [Api.Question] = try await Api.shared.fetchQuestions(
   amount: 10, 
   categoryId: 0, 
