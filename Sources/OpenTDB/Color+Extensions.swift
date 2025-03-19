@@ -2,12 +2,12 @@ import SwiftUI
 import CoreImage
 import CoreImage.CIFilterBuiltins
 
-public extension Color {
-  func adjustBrightness(by amount: Double) -> Color {
+extension Color {
+  public func adjustBrightness(by amount: Double) -> Color {
     Color(uiColor: UIColor(self).adjustBrightness(by: CGFloat(amount)))
   }
   
-  init(emoji: String) {
+  public init(emoji: String) {
     if let color = Self.make(from: emoji) {
       self = color
     } else {
