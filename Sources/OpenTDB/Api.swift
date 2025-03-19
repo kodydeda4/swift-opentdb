@@ -9,10 +9,6 @@ public struct Api: Sendable {
     )
   }
   
-  func f() async throws {
-    let questions: [Api.Question] = try await Api.shared.fetchQuestions(amount: 10, categoryId: 0, type: .mulipleChoice).results
-  }
-  
   @Sendable public func fetchQuestions(
     amount: Int = 10,
     categoryId: Int,
