@@ -1,9 +1,9 @@
 import Foundation
 
 public struct OpenTDBClient: Sendable {
-  public var verbose = false
+  public let verbose: Bool
   
-  public init(verbose: Bool = false) {
+  public init(verbose: Bool = true) {
     self.verbose = verbose
   }
   
