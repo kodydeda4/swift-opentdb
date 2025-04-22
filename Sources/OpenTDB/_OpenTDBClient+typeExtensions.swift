@@ -2,10 +2,6 @@ import Foundation
 
 extension OpenTDBClient.Question {
   public var answers: [String] { incorrectAnswers + [correctAnswer] }
-  
-  public var formattedQuestion: String {
-    self.question.stringByDecodingHTMLEntities
-  }
 }
 
 extension OpenTDBClient.Category {
