@@ -1,8 +1,12 @@
+public extension String {
+  var stringByDecodingHTMLEntities: String { self._stringByDecodingHTMLEntities }
+}
+
 internal extension String {
   /// Returns a new string made by replacing in the `String`
   /// all HTML character entity references with the corresponding
   /// character.
-  var stringByDecodingHTMLEntities : String {
+  var _stringByDecodingHTMLEntities : String {
     
     // ===== Utility functions =====
     
