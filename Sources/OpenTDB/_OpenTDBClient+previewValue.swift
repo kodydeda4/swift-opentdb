@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: - PreviewValue + Client
 
-extension OpenTDBClient {
+public extension OpenTDBClient {
   static let previewValue = Self(
     _fetchAllCategories: { .previewValue },
     _fetchQuestions: { _, _, _ in .previewValue }
